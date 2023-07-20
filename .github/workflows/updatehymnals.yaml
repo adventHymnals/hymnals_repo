@@ -35,3 +35,4 @@ jobs:
           -H "Content-Type: application/json" \
           -d "{\"name\":\"$REPO_NAME\"}" \
           "https://api.github.com/orgs/$ORG_NAME/repos"
+        echo "$ORG_NAME"
