@@ -27,11 +27,6 @@ jobs:
         run: |
           # hymnals=$(cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g")
           
-          # Add the organization key to the SSH agent
-          mkdir -p ~/.ssh
-          echo "${{secrets.CREATE_AH_REPOS}}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          
           cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g" | while read -r hymnal; do
             echo "=>$hymnal"
             # REPO_NAME=$(echo "$hymnal" | sed 's/-/_/g')  # Replace hyphens with underscores for valid repository names
@@ -59,9 +54,9 @@ jobs:
             cd /tmp
             csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms/')
             echo $csycmsLink
-            git clone "git@github.com:adventHymnals/$csycmsLink.git"
+            #git clone "git@github.com:adventHymnals/$csycmsLink.git"
+            git clone "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git"
             cd "$csycmsLink"
             git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
             git push origin master
           done
-          rm ~/.ssh/id_rsa
