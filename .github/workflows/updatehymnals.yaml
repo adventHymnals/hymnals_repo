@@ -55,7 +55,7 @@ jobs:
             csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms/')
             echo $csycmsLink
             #git clone "git@github.com:adventHymnals/$csycmsLink.git"
-            git clone "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git"
+            git clone "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$csycmsLink.git"
             cd "$csycmsLink"
             git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
             git push origin master
