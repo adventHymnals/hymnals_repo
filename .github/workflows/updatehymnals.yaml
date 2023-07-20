@@ -32,7 +32,8 @@ jobs:
           echo $hymnals
           #IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
           #for hymnal in "${hymnals[@]}"; do
-          for hymnal in "${hymnals[@]}"; do
+          #for hymnal in "${hymnals[@]}"; do
+          cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g" | while read -r hymnal; do
             echo "=>$hymnal"
             # REPO_NAME=$(echo "$hymnal" | sed 's/-/_/g')  # Replace hyphens with underscores for valid repository names
             REPO_NAME="$hymnal"
