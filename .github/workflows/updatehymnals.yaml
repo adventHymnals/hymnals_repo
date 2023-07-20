@@ -25,8 +25,10 @@ jobs:
 
       - name: Create Repos
         run: |
-          Hymnals=($(yq r hymnals.yaml hymnals[*]))
-          for hymnal in "${Hymnals[@]}"; do
+          #Hymnals=($(yq r hymnals.yaml hymnals[*]))
+          #for hymnal in "${Hymnals[@]}"; do
+          IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
+          for hymnal in "${hymnals[@]}"; do
             # REPO_NAME=$(echo "$hymnal" | sed 's/-/_/g')  # Replace hyphens with underscores for valid repository names
             REPO_NAME="$hymnal"
             ORG_NAME=${{ github.repository_owner }}
