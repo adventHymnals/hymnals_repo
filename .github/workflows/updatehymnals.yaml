@@ -39,10 +39,20 @@ jobs:
             REPO_NAME="$hymnal"
             ORG_NAME=${{ github.repository_owner }}
 
+            # Check if the repository exists
+            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/$ORG_NAME/$REPO_NAME")
+
+            if [ "$RESPONSE" -eq 200 ]; then
+              # Repository exists, delete it using GitHub API
+              curl -X DELETE \
+                -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+                "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
+            fi
+            
             # Create the new repository using GitHub API
             curl -X POST \
               -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
               -H "Content-Type: application/json" \
-              -d "{\"name\":\"$REPO_NAME\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
+              -d "{\"name\":\"$REPO_NAME\", \"description\":\"$REPO_NAME in v4 format\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
               "https://api.github.com/orgs/$ORG_NAME/repos"
           done
