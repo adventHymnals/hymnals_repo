@@ -26,6 +26,12 @@ jobs:
       - name: Create Repos
         run: |
           # hymnals=$(cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g")
+          
+          # Add the organization key to the SSH agent
+          mkdir -p ~/.ssh
+          echo "${{secrets.CREATE_AH_REPOS}}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
           cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g" | while read -r hymnal; do
             echo "=>$hymnal"
             # REPO_NAME=$(echo "$hymnal" | sed 's/-/_/g')  # Replace hyphens with underscores for valid repository names
@@ -40,7 +46,7 @@ jobs:
               ## curl -X DELETE \
               ##  -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
               ##  "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
-              continue
+              # continue
             fi
             
             # Create the new repository using GitHub API
@@ -49,4 +55,13 @@ jobs:
               -H "Content-Type: application/json" \
               -d "{\"name\":\"$REPO_NAME\", \"description\":\"$REPO_NAME in v4 format\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
               "https://api.github.com/orgs/$ORG_NAME/repos"
+              
+            cd /tmp
+            csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms')
+            echo $csycmsLink
+            git clone "git@github.com:adventHymnals/$csycmsLink.git"
+            cd "$csycmsLink"
+            git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
+            git push origin master
           done
+          rm ~/.ssh/id_rsa
