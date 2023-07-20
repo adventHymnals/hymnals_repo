@@ -27,6 +27,7 @@ jobs:
         run: |
           #Hymnals=($(yq r hymnals.yaml hymnals[*]))
           #for hymnal in "${Hymnals[@]}"; do
+          cat hymnals.yaml
           IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
           for hymnal in "${hymnals[@]}"; do
             echo $hymnal
