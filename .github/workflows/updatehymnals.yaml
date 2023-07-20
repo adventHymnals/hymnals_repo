@@ -43,9 +43,9 @@ jobs:
 
             if [ "$RESPONSE" -eq 200 ]; then
               ## Repository exists, delete it using GitHub API
-              ## curl -X DELETE \
-              ##  -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
-              ##  "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
+               curl -X DELETE \
+                -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+                "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
               # continue
             fi
             
