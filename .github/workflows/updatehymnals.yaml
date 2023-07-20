@@ -23,7 +23,7 @@ jobs:
         #mv ./your_directory/* ./
         git add .
         git commit -m 'Update gh-pages'
-        git push origin gh-pages
+        git push origin gh-pages -f
     - name: Create new repository
       run: |
         REPO_NAME="new-repo-name"  # Replace this with the desired repository name
