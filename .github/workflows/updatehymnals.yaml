@@ -25,14 +25,7 @@ jobs:
 
       - name: Create Repos
         run: |
-          #Hymnals=($(yq r hymnals.yaml hymnals[*]))
-          #for hymnal in "${Hymnals[@]}"; do
-          cat hymnals.yaml
-          hymnals=$(cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g")
-          echo $hymnals
-          #IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
-          #for hymnal in "${hymnals[@]}"; do
-          #for hymnal in "${hymnals[@]}"; do
+          # hymnals=$(cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g")
           cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g" | while read -r hymnal; do
             echo "=>$hymnal"
             # REPO_NAME=$(echo "$hymnal" | sed 's/-/_/g')  # Replace hyphens with underscores for valid repository names
@@ -43,10 +36,11 @@ jobs:
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/$ORG_NAME/$REPO_NAME")
 
             if [ "$RESPONSE" -eq 200 ]; then
-              # Repository exists, delete it using GitHub API
-              curl -X DELETE \
-                -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
-                "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
+              ## Repository exists, delete it using GitHub API
+              ## curl -X DELETE \
+              ##  -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+              ##  "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
+              continue
             fi
             
             # Create the new repository using GitHub API
