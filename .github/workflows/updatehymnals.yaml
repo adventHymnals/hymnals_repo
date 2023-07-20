@@ -61,5 +61,6 @@ jobs:
             ls
             ls -lha
             git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
+            git config --unset-all http.https://github.com/.extraheader
             git push "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git" master
           done
