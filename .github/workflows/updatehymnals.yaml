@@ -57,7 +57,7 @@ jobs:
               "https://api.github.com/orgs/$ORG_NAME/repos"
               
             cd /tmp
-            csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms')
+            csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms/')
             echo $csycmsLink
             git clone "git@github.com:adventHymnals/$csycmsLink.git"
             cd "$csycmsLink"
