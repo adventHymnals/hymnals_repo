@@ -27,8 +27,10 @@ jobs:
     - name: Create new repository
       run: |
         REPO_NAME="new-repo-name"  # Replace this with the desired repository name
+        echo $REPO_NAME
         # ORG_NAME="adventHymnals"  # Replace this with your GitHub username or organization name
         ORG_NAME=$(echo "${{ env.GITHUB_REPOSITORY }}" | cut -d / -f 1)
+        echo $ORG_NAME
         # Create the new repository using GitHub API
         curl -X POST \
           -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
