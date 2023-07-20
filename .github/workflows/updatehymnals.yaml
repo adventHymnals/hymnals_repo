@@ -30,7 +30,7 @@ jobs:
           cat hymnals.yaml
           hymnals=$(cat hymnals.yaml | grep -o "'[^\']*'" | sed "s/'//g")
           echo $hymnals
-          IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
+          #IFS=$'\n' read -d '' -r -a hymnals < hymnals.yaml
           #for hymnal in "${hymnals[@]}"; do
           for hymnal in "$hymnals"; do
             echo $hymnal
