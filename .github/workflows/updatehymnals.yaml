@@ -60,5 +60,5 @@ jobs:
             cd "$csycmsLink"
             ls
             git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
-            git push origin master
+            git push "https://${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git" master
           done
