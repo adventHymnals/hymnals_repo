@@ -24,3 +24,14 @@ jobs:
         git add .
         git commit -m 'Update gh-pages'
         git push origin gh-pages
+    - name: Create new repository
+      run: |
+        REPO_NAME="new-repo-name"  # Replace this with the desired repository name
+        # ORG_NAME="adventHymnals"  # Replace this with your GitHub username or organization name
+        ORG_NAME=$(echo "${{ env.GITHUB_REPOSITORY }}" | cut -d / -f 1)
+        # Create the new repository using GitHub API
+        curl -X POST \
+          -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+          -H "Content-Type: application/json" \
+          -d "{\"name\":\"$REPO_NAME\"}" \
+          "https://api.github.com/orgs/$ORG_NAME/repos"
