@@ -35,6 +35,6 @@ jobs:
         curl -X POST \
           -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
           -H "Content-Type: application/json" \
-          -d "{\"name\":\"$REPO_NAME\"}" \
+          -d "{\"name\":\"$REPO_NAME\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
           "https://api.github.com/orgs/$ORG_NAME/repos"
         echo "$ORG_NAME"
