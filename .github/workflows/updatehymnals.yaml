@@ -51,16 +51,16 @@ jobs:
               -d "{\"name\":\"$REPO_NAME\", \"description\":\"$REPO_NAME in v4 format\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
               "https://api.github.com/orgs/$ORG_NAME/repos"
               
-            cd /tmp
-            csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms/')
-            echo $csycmsLink
-            #git clone "git@github.com:adventHymnals/$csycmsLink.git"
-            #git clone "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$csycmsLink.git"
-            git clone "https://github.com/adventHymnals/$csycmsLink.git"
-            cd "$csycmsLink"
-            ls
-            ls -lha
-            git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
-            git config --unset-all http.https://github.com/.extraheader
-            git push "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git" master
+            #cd /tmp
+            #csycmsLink=$(echo "$REPO_NAME"|sed -e 's/v4$/csycms/')
+            #echo $csycmsLink
+            ##git clone "git@github.com:adventHymnals/$csycmsLink.git"
+            ##git clone "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$csycmsLink.git"
+            #git clone "https://github.com/adventHymnals/$csycmsLink.git"
+            #cd "$csycmsLink"
+            #ls
+            #ls -lha
+            #git remote set-url origin "git@github.com:adventHymnals/$REPO_NAME.git"
+            #git config --unset-all http.https://github.com/.extraheader
+            #git push "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git" master
           done
