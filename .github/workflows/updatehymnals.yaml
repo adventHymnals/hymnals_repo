@@ -36,13 +36,13 @@ jobs:
             # Check if the repository exists
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/$ORG_NAME/$REPO_NAME")
 
-            if [ "$RESPONSE" -eq 200 ]; then
-              ## Repository exists, delete it using GitHub API
-               curl -X DELETE \
-                -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
-                "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
-              # continue
-            fi
+            #if [ "$RESPONSE" -eq 200 ]; then
+            #  ## Repository exists, delete it using GitHub API
+            #   curl -X DELETE \
+            #    -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+            #    "https://api.github.com/repos/$ORG_NAME/$REPO_NAME"
+            #  # continue
+            #fi
             
             # Create the new repository using GitHub API
             curl -X POST \
