@@ -64,3 +64,14 @@ jobs:
             #git config --unset-all http.https://github.com/.extraheader
             #git push "https://username:${{ secrets.CREATE_AH_REPOS }}@github.com/$ORG_NAME/$REPO_NAME.git" master
           done
+          REPO_NAME="advent_hymnals_v4"
+          ORG_NAME=${{ github.repository_owner }}
+
+          # Check if the repository exists
+          #RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/$ORG_NAME/$REPO_NAME")
+          curl -X POST \
+              -H "Authorization: token ${{ secrets.CREATE_AH_REPOS }}" \
+              -H "Content-Type: application/json" \
+              -d "{\"name\":\"$REPO_NAME\", \"description\":\"$REPO_NAME in v4 format\", \"private\":false,\"has_issues\":true,\"has_projects\":true,\"has_wiki\":true}" \
+              "https://api.github.com/orgs/$ORG_NAME/repos
+
