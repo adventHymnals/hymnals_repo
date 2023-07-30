@@ -2,12 +2,12 @@
  
 |All Hymnals|
 |[Campus Melodies](/campus-melodies-v4)|
-|[Campus Melodies](/hymns-for-the-poor-of-the-flock-v4)|
-|[Campus Melodies](/millenial-harp-v4)|
-|[Campus Melodies](/Hymns-for-Gods-Peculiar-People-v4)|
-|[Campus Melodies](/christ-in-song-v4)|
-|[Campus Melodies](/church-hymnal-v4)|
-|[Campus Melodies](/seventh-day-adventist-hymnal-v4)|
-|[Campus Melodies](/nyimbo-za-kristo-v4)|
-|[Campus Melodies](/wende-nyasaye-v4)|
-|[Campus Melodies](/songs-for-worship-v4)|
+|[Hymns for the Poor of the Flock](/hymns-for-the-poor-of-the-flock-v4)|
+|[Millenial Harp. Designed for Meetings on the Second Coming of Christ](/millenial-harp-v4)|
+|[null](/Hymns-for-Gods-Peculiar-People-v4)|
+|[Christ in Song](/christ-in-song-v4)|
+|[Church Hymnal](/church-hymnal-v4)|
+|[Seventh-day Adventist Hymnal](/seventh-day-adventist-hymnal-v4)|
+|[Nyimbo za Kristo](/nyimbo-za-kristo-v4)|
+|[Wende Nyasaye](/wende-nyasaye-v4)|
+|[Songs for Worship](/songs-for-worship-v4)|
