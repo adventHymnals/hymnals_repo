@@ -10,4 +10,3 @@
 |[Seventh-day Adventist Hymnal](/seventh-day-adventist-hymnal-v4)|
 |[Nyimbo za Kristo](/nyimbo-za-kristo-v4)|
 |[Wende Nyasaye](/wende-nyasaye-v4)|
-|[Songs for Worship](/songs-for-worship-v4)|
